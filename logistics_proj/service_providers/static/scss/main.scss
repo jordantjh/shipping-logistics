@@ -97,3 +97,13 @@
     small{
     }
 }
+
+.contracts-table{
+    margin-top: 25px;
+
+    &-header{
+        background-color: $brand_grey;
+        color: #fff;
+        font-size: 75%;
+    }
+}

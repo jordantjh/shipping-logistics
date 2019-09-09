@@ -6104,4 +6104,11 @@ a.text-dark:hover, a.text-dark:focus {
   .contracts-row-boxes div {
     margin-left: 8px; }
 
+.contracts-table {
+  margin-top: 25px; }
+  .contracts-table-header {
+    background-color: #5F6366;
+    color: #fff;
+    font-size: 75%; }
+
 /*# sourceMappingURL=main.css.map */
