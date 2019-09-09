@@ -31,3 +31,24 @@
     padding: 35px;
     box-shadow: 1.5px 3px $brand_grey;
 }
+
+/****************************/
+/**** SP_BASE.HTML **********/
+/****************************/
+.top-header-links {
+    a{
+        margin-left: 5px;
+        margin-right: 10px;
+    }
+}
+
+.sp-navbar{
+    justify-content: flex-start;
+    background-color: $brand_blue;
+    height: 50px;
+
+    a{
+        margin-right: 20px;
+        color: #fff;
+    }
+}

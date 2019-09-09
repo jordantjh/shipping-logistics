@@ -6064,4 +6064,19 @@ a.text-dark:hover, a.text-dark:focus {
   padding: 35px;
   box-shadow: 1.5px 3px #5F6366; }
 
+/****************************/
+/**** SP_BASE.HTML **********/
+/****************************/
+.top-header-links a {
+  margin-left: 5px;
+  margin-right: 10px; }
+
+.sp-navbar {
+  justify-content: flex-start;
+  background-color: #4D6D9A;
+  height: 50px; }
+  .sp-navbar a {
+    margin-right: 20px;
+    color: #fff; }
+
 /*# sourceMappingURL=main.css.map */
