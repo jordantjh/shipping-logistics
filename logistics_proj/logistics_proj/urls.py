@@ -22,6 +22,7 @@ urlpatterns = [
     path('', include('service_providers.urls', namespace='sp')),
     path('login/', rootViews.loginView, name="login"),
     path('reset/',rootViews.resetpassView, name ="reset"),
+    path('change/',rootViews.changepasswordView, name ="change"),
 
     path('admin/', admin.site.urls),
 ]
