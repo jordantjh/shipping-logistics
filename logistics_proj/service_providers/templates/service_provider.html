@@ -5,7 +5,7 @@
 {% block content %}
 <div class="sp-body">
     <div class="sp-body-title">
-        <h1>Contracts</h1>
+        <h1>Service Provider</h1>
     </div>
     <div class="sp-body-content">
         <div class="row">
@@ -21,6 +21,33 @@
                     <option>Canceled</option>
                 </select>
             </div>
+             <form>
+                 <div class="form-group">
+                     <label for="acc_no">Account Number</label>
+                     <input type="number" class="form-control" id="acc_no" placeholder="Account Number">
+
+                 </div>
+                 <br>
+                 Account Number:<input type="text" name="acc_no" ><br>
+                 Name:<input type="text" name="name"><br>
+                 Address1:<input type="text" name="addr1" ><br>
+                 Address2:<input type="text" name="addr2" ><br>
+                 Address3:<input type="text" name="addr1" ><br>
+                  <select name="Country">
+                      <option >Select</option>
+                      <option value="us">United States</option>
+                      <option value="uk">United Kingdom</option>
+                      <option value="chi">China</option>
+                      <option value="ind">India</option>
+                  </select><br>
+                 City<input type="text" name="city">
+                 State<input type="text" name="state">
+                 Zip<input type="number" name="zip">
+                 <br>
+
+                <input type="submit" value="Submit">
+             </form>
+</form>
         </div>
     </div>
 </div>
