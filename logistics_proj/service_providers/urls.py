@@ -5,5 +5,5 @@ from . import views as spViews
 
 app_name = 'service_providers'
 urlpatterns = [
-    path('', spViews.indexView, name="index")
+    path('', spViews.contractsView, name="contracts")
 ]

@@ -1,0 +1,27 @@
+{% extends 'partials/sp_base.html' %}
+
+{% block title %}SBA | Index{% endblock %}
+
+{% block content %}
+<div class="sp-body">
+    <div class="sp-body-title">
+        <h1>Contracts</h1>
+    </div>
+    <div class="sp-body-content">
+        <div class="row">
+            <div class="filter">
+                Filter by
+                <select>
+                    <option>All Active</option>
+                    <option>Non-Processed</option>
+                    <option>Accepted</option>
+                    <option>DOCK-Confirmed</option>
+                    <option>Appointment-Confirmed</option>
+                    <option>Delivery-Confirmed</option>
+                    <option>Canceled</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
