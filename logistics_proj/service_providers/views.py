@@ -5,3 +5,7 @@ from django.shortcuts import render
 
 def contractsView(req):
     return render(req, 'contracts.html')
+
+
+def contractsDetailsView(req, pk):
+    return render(req, 'contracts_details.html')

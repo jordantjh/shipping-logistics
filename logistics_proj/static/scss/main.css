@@ -6050,6 +6050,11 @@ a.text-dark:hover, a.text-dark:focus {
     background-color: #99CED3;
     border-color: #99CED3; }
 
+.btn-secondary {
+  color: #fff;
+  background-color: #99CED3;
+  border-color: #99CED3; }
+
 /*********************/
 /**** LOGIN **********/
 /*********************/
@@ -6110,5 +6115,24 @@ a.text-dark:hover, a.text-dark:focus {
     background-color: #5F6366;
     color: #fff;
     font-size: 75%; }
+
+/****************************/
+/**** contracts_details.html **********/
+/****************************/
+.contracts-details-header *-main h3 {
+  margin-bottom: 0; }
+
+.contracts-details-header *-main p {
+  margin-bottom: 0; }
+
+.contracts-details-header *-minor {
+  display: inline-block;
+  margin-top: 20px; }
+
+.contracts-update-major a {
+  margin-right: 10px; }
+
+#minor-update-datetime {
+  width: 250px; }
 
 /*# sourceMappingURL=main.css.map */

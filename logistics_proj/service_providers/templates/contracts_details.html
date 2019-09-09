@@ -1,0 +1,57 @@
+{% extends 'partials/sp_base.html' %}
+
+{% block title %}SBA | Index{% endblock %}
+
+{% block content %}
+<div class="contracts-details-header sp-body">
+    <div class="contracts-details-header-main">
+        <h3>Contract #: T0722-02</h3>
+        <p>Status: <span>Delivery Confirmed</span></p>
+        <p><a href="#">see Milestones</a></p>
+    </div>
+    <div class="contracts-details-header-minor">
+        <ul>
+            <li>Account ID #: 123</li>
+            <li>Account Name: Test Vendor</li>
+            <li>Account Ref #: </li>
+            <li>Service: Final Mile Only</li>
+            <li>Service Type: <u>Signature Plus</u></li>
+            <li>Status: Non-Processed</li>
+            <li>Booker Name: </li>
+            <li>Terminal: ATL</li>
+            <li>Contract Entered Date: 07/22/2019 12:04PM</li>
+        </ul>
+    </div>
+
+    <hr>
+
+    <div class="contracts-update">
+        <div class="contracts-update-major">
+            <a href="#" class="btn btn-secondary">DOCK-Confirmed</a>
+            <a href="#" class="btn btn-secondary">Appointment-Confirmed</a>
+            <a href="#" class="btn btn-secondary">Delivery-Confirmed</a>
+        </div>
+        <div class="contracts-update-minor">
+            <h3>Minor Updates</h3>
+            <form>
+                <select name="minor-update-event">
+                    <option value="">-- select an update --</option>
+                    <option>Attempted Delivery - Item Refused</option>
+                    <option>Attempted Delivery - Location Inaccessible</option>
+                    <option>Attempted Delivery - Nobody Home</option>
+                    <option>Bad Phone Number</option>
+                    <option>Contacted Consignee - Delivery Scheduled</option>
+                    <option>Contacted Consignee - Awaiting Consignee Instruction</option>
+                    <option>Delivered at Consignee - No Exception Noted</option>
+                    <option>Delivered at Consignee With Damage</option>
+                    <option>Delivered at Consignee With Overage</option>
+                    <option>Delivered at Consignee With Shortage</option>
+                </select>
+                <input type="text" id="minor-update-datetime" name="minor-update-datetime"
+                    placeholder="DD/MM/YYYY HH:MM AM/PM">
+                <input type="submit" class="btn btn-primary" value="Add Update">
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
