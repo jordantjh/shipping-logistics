@@ -6082,4 +6082,26 @@ a.text-dark:hover, a.text-dark:focus {
 .sp-body {
   padding: 20px 20px 0 20px; }
 
+/****************************/
+/**** Contracts.html **********/
+/****************************/
+.box {
+  width: 20px;
+  height: 20px;
+  display: inline-block; }
+  .box-yellow {
+    background-color: yellow; }
+  .box-red {
+    background-color: red; }
+  .box-green {
+    background-color: green; }
+
+.contracts-row-filter {
+  display: inline-block; }
+
+.contracts-row-boxes {
+  display: inline-block; }
+  .contracts-row-boxes div {
+    margin-left: 8px; }
+
 /*# sourceMappingURL=main.css.map */

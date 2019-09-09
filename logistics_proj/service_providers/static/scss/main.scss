@@ -59,6 +59,41 @@
     &-content{
 
     }
+}
 
+/****************************/
+/**** Contracts.html **********/
+/****************************/
 
+.box{
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+
+    &-yellow{
+        background-color: yellow;
+    }
+
+    &-red{
+        background-color: red;
+    }
+
+    &-green{
+        background-color: green;
+    }
+}
+
+.contracts-row-filter{
+    display: inline-block;
+}
+
+.contracts-row-boxes{
+    display: inline-block;
+
+    div{
+        margin-left: 8px;
+    }
+
+    small{
+    }
 }
