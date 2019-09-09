@@ -6038,19 +6038,30 @@ a.text-dark:hover, a.text-dark:focus {
   .table-bordered td {
     border: 1px solid #ddd !important; } }
 
-h1 {
-  color: #4D6D9A; }
+/*******************************/
+/**** BOOTRSTRAP OVERWRITE******/
+/*******************************/
+.btn-primary {
+  color: #fff;
+  background-color: #4D6D9A;
+  border-color: #4D6D9A; }
+  .btn-primary .btn-primary:hover {
+    color: #fff;
+    background-color: #99CED3;
+    border-color: #99CED3; }
 
-h2 {
-  color: #5F6366; }
-
-h3 {
-  color: #86B3D1; }
-
-h4 {
-  color: #99CED3; }
-
-h5 {
-  color: #EDB5BF; }
+/*********************/
+/**** LOGIN **********/
+/*********************/
+.login-form-div {
+  width: 420px;
+  height: auto;
+  border: 1px solid #5F6366;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 35px;
+  box-shadow: 1.5px 3px #5F6366; }
 
 /*# sourceMappingURL=main.css.map */

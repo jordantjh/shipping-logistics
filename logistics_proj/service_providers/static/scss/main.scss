@@ -1,21 +1,35 @@
 @import "bootstrap.scss";
 
-h1{
-    color: $brand_blue;
+// Brand colors: $brand_blue, $brand_grey, $brand_purple, $brand_teal, $brand_pink
+
+/*******************************/
+/**** BOOTRSTRAP OVERWRITE******/
+/*******************************/
+.btn-primary {
+    color: #fff;
+    background-color: $brand_blue;
+    border-color: $brand_blue; 
+
+    .btn-primary:hover {
+        color: #fff;
+        background-color: $brand_teal;
+        border-color: $brand_teal; 
+    }
 }
 
-h2{
-    color: $brand_grey;
-}
+  
 
-h3{
-    color: $brand_purple;
-}
-
-h4{
-    color: $brand_teal;
-}
-
-h5{
-    color: $brand_pink;
+/*********************/
+/**** LOGIN **********/
+/*********************/
+.login-form-div{
+    width: 420px;
+    height: auto;
+    border: 1px solid $brand_grey;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 35px;
+    box-shadow: 1.5px 3px $brand_grey;
 }
