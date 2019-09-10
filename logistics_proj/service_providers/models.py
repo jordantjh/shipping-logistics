@@ -5,7 +5,7 @@ from datetime import datetime
 
 
 class Contract(models.Model):
-    num = models.CharField(max_length=25)
+    num = models.CharField(max_length=30)
     terminal = models.CharField(max_length=25)
     service = models.CharField(max_length=15)  # "First Mile" or "Final Mile"
     service_type = models.CharField(max_length=25)  # "signature plus"
