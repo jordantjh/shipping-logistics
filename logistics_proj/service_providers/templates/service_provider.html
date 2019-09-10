@@ -15,30 +15,22 @@
 
     <form>
         <div class="form-inline">
-            <label for="acc_name">Account Name:</label>
+            <label for="acc_name" class="col-sm-4 col-form-label">Account Name:</label>
             <input type="text" class="form-control" id="acc_name">
         </div>
         <div class="form-inline">
-            <label for="t_name">Name:</label>
+            <label for="t_name" class="col-sm-4 col-form-label">Name:</label>
             <input type="text" class="form-control" id="t_name">
         </div>
         <div class="form-inline">
-            <label for="add_1">Address 1:</label>
+            <label for="add_1" class="col-sm-4 col-form-label">Address :</label>
             <input type="text" class="form-control" id="add_1">
         </div>
-        <div class="form-inline">
-            <label for="add_2">Address 2:</label>
-            <input type="text" class="form-control" id="add_2">
-        </div>
-        <div class="form-inline">
-            <label for="add_3">Address 3:</label>
-            <input type="text" class="form-control" id="add_3">
-        </div>
-       <div>
-           Country
+       <div  class="form-inline">
+           <label for="add_1" class="col-sm-4 col-form-label">Country :</label>
        </div>
         <div class="form-inline">
-            <label for="city">City:</label>
+            <label for="city" class="col-sm-4 col-form-label">City:</label>
             <input type="text" class="form-control" id="city">
              <label for="state">State:</label>
             <input type="text" class="form-control" id="state">
@@ -46,38 +38,23 @@
             <input type="text" class="form-control" id="zip">
         </div>
         <div class="form-inline">
-            <label for="phone">Phone:</label>
+            <label for="phone" class="col-sm-4 col-form-label">Phone:</label>
             <input type="tel" class="form-control" id="phone">
-            <label for="ext">Ext:</label>
-            <input type="tel" class="form-control" id="ext">
         </div>
         <div class="form-inline">
-            <label for="Fax">Fax:</label>
-            <input type="tel" class="form-control" id="Fax">
-        </div>
-        <div class="form-inline">
-            <label for="add_3">Address 3:</label>
-            <input type="text" class="form-control" id="add_3">
-        </div>
-        <div class="form-inline">
-            <label for="toll_f">Toll Free:</label>
-            <input type="tel" class="form-control" id="toll_f">
-        </div>
-        <div class="form-inline">
-            <label for="email">Email:</label>
+            <label for="email" class="col-sm-4 col-form-label">Email:</label>
             <input type="text" class="form-control" id="email">
-            <small><a href="#">Email</a></small>
-            <small><a href="#">Fax</a></small>
         </div>
         <div class="form-inline">
-            <label for="add_3">Address 3:</label>
-            <input type="text" class="form-control" id="add_3">
+            <label for="Timezone" class="col-sm-4 col-form-label">Timezone:</label>
+            <input type="text" class="form-control" id="Timezone">
         </div>
-        <div class="form-inline">
-            <label for="add_3">Address 3:</label>
-            <input type="text" class="form-control" id="add_3">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
+
+        <br><br>
+        <div class="form-button">
+                <button type="submit" class="btn btn-primary" >Save</button>
+                <button type="cancel" class="btn btn-primary">Cancel</button>
+
     </form>
 </div>
 {% endblock %}
