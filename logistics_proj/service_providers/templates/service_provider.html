@@ -1,54 +1,83 @@
 {% extends 'partials/sp_base.html' %}
 
 {% block title %}SBA | Index{% endblock %}
-
 {% block content %}
+
 <div class="sp-body">
-    <div class="sp-body-title">
-        <h1>Service Provider</h1>
-    </div>
-    <div class="sp-body-content">
-        <div class="row">
-            <div class="filter">
-                Filter by
+    <div class="Service Provider">
+                Service Provider
                 <select>
-                    <option>All Active</option>
-                    <option>Non-Processed</option>
-                    <option>Accepted</option>
-                    <option>DOCK-Confirmed</option>
-                    <option>Appointment-Confirmed</option>
-                    <option>Delivery-Confirmed</option>
-                    <option>Canceled</option>
+                    <option>Details</option>
+                    <option>Contact</option>
+                    <option>Note</option>
                 </select>
-            </div>
-             <form>
-                 <div class="form-group">
-                     <label for="acc_no">Account Number</label>
-                     <input type="number" class="form-control" id="acc_no" placeholder="Account Number">
-
-                 </div>
-                 <br>
-                 Account Number:<input type="text" name="acc_no" ><br>
-                 Name:<input type="text" name="name"><br>
-                 Address1:<input type="text" name="addr1" ><br>
-                 Address2:<input type="text" name="addr2" ><br>
-                 Address3:<input type="text" name="addr1" ><br>
-                  <select name="Country">
-                      <option >Select</option>
-                      <option value="us">United States</option>
-                      <option value="uk">United Kingdom</option>
-                      <option value="chi">China</option>
-                      <option value="ind">India</option>
-                  </select><br>
-                 City<input type="text" name="city">
-                 State<input type="text" name="state">
-                 Zip<input type="number" name="zip">
-                 <br>
-
-                <input type="submit" value="Submit">
-             </form>
-</form>
-        </div>
     </div>
+
+    <form>
+        <div class="form-inline">
+            <label for="acc_name">Account Name:</label>
+            <input type="text" class="form-control" id="acc_name">
+        </div>
+        <div class="form-inline">
+            <label for="t_name">Name:</label>
+            <input type="text" class="form-control" id="t_name">
+        </div>
+        <div class="form-inline">
+            <label for="add_1">Address 1:</label>
+            <input type="text" class="form-control" id="add_1">
+        </div>
+        <div class="form-inline">
+            <label for="add_2">Address 2:</label>
+            <input type="text" class="form-control" id="add_2">
+        </div>
+        <div class="form-inline">
+            <label for="add_3">Address 3:</label>
+            <input type="text" class="form-control" id="add_3">
+        </div>
+       <div>
+           Country
+       </div>
+        <div class="form-inline">
+            <label for="city">City:</label>
+            <input type="text" class="form-control" id="city">
+             <label for="state">State:</label>
+            <input type="text" class="form-control" id="state">
+             <label for="zip">Zip:</label>
+            <input type="text" class="form-control" id="zip">
+        </div>
+        <div class="form-inline">
+            <label for="phone">Phone:</label>
+            <input type="tel" class="form-control" id="phone">
+            <label for="ext">Ext:</label>
+            <input type="tel" class="form-control" id="ext">
+        </div>
+        <div class="form-inline">
+            <label for="Fax">Fax:</label>
+            <input type="tel" class="form-control" id="Fax">
+        </div>
+        <div class="form-inline">
+            <label for="add_3">Address 3:</label>
+            <input type="text" class="form-control" id="add_3">
+        </div>
+        <div class="form-inline">
+            <label for="toll_f">Toll Free:</label>
+            <input type="tel" class="form-control" id="toll_f">
+        </div>
+        <div class="form-inline">
+            <label for="email">Email:</label>
+            <input type="text" class="form-control" id="email">
+            <small><a href="#">Email</a></small>
+            <small><a href="#">Fax</a></small>
+        </div>
+        <div class="form-inline">
+            <label for="add_3">Address 3:</label>
+            <input type="text" class="form-control" id="add_3">
+        </div>
+        <div class="form-inline">
+            <label for="add_3">Address 3:</label>
+            <input type="text" class="form-control" id="add_3">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
 </div>
 {% endblock %}
