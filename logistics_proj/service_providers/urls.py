@@ -6,6 +6,8 @@ from . import views as spViews
 app_name = 'service_providers'
 urlpatterns = [
     path('', spViews.contractsView, name="contracts"),
+    path('contracts/<int:pk>/milestones',
+         spViews.milestonesView, name="milestones"),
     path('contracts/<int:pk>/', spViews.contractsDetailsView, name="contracts"),
     path('sp/', spViews.service_pView, name="service_p"),
     path('sp/notes/', spViews.notesView, name="notes"),

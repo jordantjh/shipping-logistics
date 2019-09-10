@@ -11,6 +11,10 @@ def contractsDetailsView(req, pk):
     return render(req, 'contracts_details.html')
 
 
+def milestonesView(req, pk):
+    return render(req, 'milestones.html')
+
+
 def service_pView(req):
     return render(req, 'service_provider.html')
 
