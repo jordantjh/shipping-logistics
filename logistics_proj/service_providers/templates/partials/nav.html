@@ -1,5 +1,5 @@
 <nav class="navbar sp-navbar">
-    <a href="#">Contracts</a>
+    <a href="{% url 'sp:contracts' %}">Contracts</a>
     <div class="dropdown show">
         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
@@ -7,9 +7,9 @@
         </a>
 
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <a class="dropdown-item" href="#">Details</a>
-            <a class="dropdown-item" href="#">Contacts</a>
-            <a class="dropdown-item" href="#">Notes</a>
+            <a class="dropdown-item" href="{% url 'sp:service_p' %}">Details</a>
+            <a class="dropdown-item" href="{% url 'sp:contacts' %}">Contacts</a>
+            <a class="dropdown-item" href="{% url 'sp:notes' %}">Notes</a>
         </div>
     </div>
 </nav>

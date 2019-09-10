@@ -27,32 +27,28 @@
     <hr>
 
     <div class="contracts-update">
-        <div class="contracts-update-major">
-            <a href="#" class="btn btn-secondary">DOCK-Confirmed</a>
-            <a href="#" class="btn btn-secondary">Appointment-Confirmed</a>
-            <a href="#" class="btn btn-secondary">Delivery-Confirmed</a>
-        </div>
-        <div class="contracts-update-minor">
-            <h3>Minor Updates</h3>
-            <form>
-                <select name="minor-update-event">
-                    <option value="">-- select an update --</option>
-                    <option>Attempted Delivery - Item Refused</option>
-                    <option>Attempted Delivery - Location Inaccessible</option>
-                    <option>Attempted Delivery - Nobody Home</option>
-                    <option>Bad Phone Number</option>
-                    <option>Contacted Consignee - Delivery Scheduled</option>
-                    <option>Contacted Consignee - Awaiting Consignee Instruction</option>
-                    <option>Delivered at Consignee - No Exception Noted</option>
-                    <option>Delivered at Consignee With Damage</option>
-                    <option>Delivered at Consignee With Overage</option>
-                    <option>Delivered at Consignee With Shortage</option>
-                </select>
-                <input type="text" id="minor-update-datetime" name="minor-update-datetime"
-                    placeholder="DD/MM/YYYY HH:MM AM/PM">
-                <input type="submit" class="btn btn-primary" value="Add Update">
-            </form>
-        </div>
+        <h3>Updates</h3>
+        <form>
+            <select name="minor-update-event">
+                <option value="">-- select an update --</option>
+                <option value="dock-confirmed">DOCK-Confirmed</option>
+                <option value="appt-confirmed">Appointment-Confirmed</option>
+                <option value="delivery-confirmed">Delivery-Confirmed</option>
+                <option>Attempted Delivery - Item Refused</option>
+                <option>Attempted Delivery - Location Inaccessible</option>
+                <option>Attempted Delivery - Nobody Home</option>
+                <option>Bad Phone Number</option>
+                <option>Contacted Consignee - Delivery Scheduled</option>
+                <option>Contacted Consignee - Awaiting Consignee Instruction</option>
+                <option>Delivered at Consignee - No Exception Noted</option>
+                <option>Delivered at Consignee With Damage</option>
+                <option>Delivered at Consignee With Overage</option>
+                <option>Delivered at Consignee With Shortage</option>
+            </select>
+            <input type="text" id="minor-update-datetime" name="minor-update-datetime"
+                placeholder="DD/MM/YYYY HH:MM AM/PM">
+            <input type="submit" class="btn btn-primary" value="Add Update">
+        </form>
     </div>
 </div>
 {% endblock %}
