@@ -10,6 +10,7 @@ def contractsDetailsView(req, pk):
 def service_pView(req):
     return render(req, 'service_provider.html')
 
+
 def notesView(req):
     return render(req, 'notes.html')
 
