@@ -1,7 +1,11 @@
-<h3>Contract ID: T2202-2020</h3>
+<h3>Contract ID: {{ contract_num }}</h3>
 <br>
 
 <!-- show DOCK/APPT/.. confirmed here if confirmed-->
+
+{% if contract_updates == None %}
+<p>No updates added.</p>
+{% endif %}
 
 {% for contract_update in contract_updates %}
 <p>"event name" @ "event time"</p>

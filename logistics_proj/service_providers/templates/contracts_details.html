@@ -5,21 +5,22 @@
 {% block content %}
 <div class="contracts-details-header sp-body">
     <div class="contracts-details-header-main">
-        <h3>Contract #: T0722-02</h3>
-        <p>Status: <span>Delivery Confirmed</span></p>
-        <p><a href="{% url 'sp:milestones' 1 %}">see Milestones</a></p>
+        <h3>Contract #: {{ contract.num }}</h3>
+        <p>Status: <span>{{ contract.status }}</span></p>
+        <p><a href="{% url 'sp:milestones' contract.id %}">see Milestones</a></p>
     </div>
     <div class="contracts-details-header-minor">
         <ul>
-            <li>Account ID #: 123</li>
-            <li>Account Name: Test Vendor</li>
-            <li>Account Ref #: </li>
-            <li>Service: Final Mile Only</li>
-            <li>Service Type: <u>Signature Plus</u></li>
-            <li>Status: Non-Processed</li>
-            <li>Booker Name: </li>
-            <li>Terminal: ATL</li>
-            <li>Contract Entered Date: 07/22/2019 12:04PM</li>
+            <li>Account ID #: {{ contract.account_id_num }}123</li>
+            <li>Account Name: {{ contract.account_name }}</li>
+            <li>Account Ref #: {{ contract.account_ref_num }}</li>
+            <li>Service: {{ contract.service }}</li> <!-- Final Mile Only-->
+            <li>Service Type: <u>{{ contract.service_type }}</u></li>
+            <!--Signature Plus-->
+            <li>Status: {{ contract.status }}</li>
+            <li>Booker Name: {{ contract.booker_name }}</li>
+            <li>Terminal: {{ contract.terminal }}</li>
+            <li>Contract Entered Date: {{ contract.time_added }}</li>
         </ul>
     </div>
 
