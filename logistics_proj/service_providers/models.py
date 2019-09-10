@@ -24,31 +24,36 @@ class Contract(models.Model):
     booker_name = models.CharField(max_length=35)
     status = models.CharField(max_length=20)
 
+
 class ContractUpdate(models.Model):
-    contract_id = models.ForeignKey('Contracts', on_delete=models.CASCADE)
+    contract_id = models.ForeignKey('Contract', on_delete=models.CASCADE)
     author = models.CharField(max_length=25)
     event_name = models.CharField(max_length=25)
     event_time = models.DateTimeField(blank=True, null=True)
     time_added = models.DateTimeField(blank=True, null=True)
 
+
 class AppointmentConfirmed(models.Model):
-    contract_id = models.ForeignKey('Contracts', on_delete=models.CASCADE)
+    contract_id = models.ForeignKey('Contract', on_delete=models.CASCADE)
     appt_date = models.DateTimeField(blank=True, null=True)
     appt_by_user = models.CharField(max_length=25)
-    comment = models.CharField(blank=True, null=True)
+    comment = models.TextField(blank=True, null=True)
+
 
 class DockConfirmed(models.Model):
-    contract_id = models.ForeignKey('Contracts', on_delete=models.CASCADE)
+    contract_id = models.ForeignKey('Contract', on_delete=models.CASCADE)
     appt_by_user = models.DateTimeField(blank=True, null=True)
     signed_by = models.CharField(max_length=25)
     condition_comment = models.CharField(max_length=25)
 
+
 class DeliveryConfirmed(models.Model):
-    contract_id = models.ForeignKey('Contracts', on_delete=models.CASCADE)
+    contract_id = models.ForeignKey('Contract', on_delete=models.CASCADE)
     delivery_datetime = models.DateTimeField(blank=True, null=True)
     signed_by = models.CharField(max_length=25)
     condition_comment = models.CharField(max_length=25)
-    signed_by = models.ImageField(upload to'pods/')
+    signed_pod = models.ImageField(upload_to='pods/')
+
 
 class ServiceProvider(models.Model):
     name = models.CharField(max_length=30)
@@ -61,9 +66,11 @@ class ServiceProvider(models.Model):
     email = models.CharField(max_length=30)
     timezone = models.CharField(max_length=30)
 
+
 class SPNote(models.Model):
     content = models.CharField(max_length=30)
     author = models.CharField(max_length=30)
+
 
 class SPContact(models.Model):
     title = models.CharField(max_length=30)
@@ -74,4 +81,3 @@ class SPContact(models.Model):
     phone = models.CharField(max_length=30)
     email = models.CharField(max_length=30)
     timezone = models.CharField(max_length=30)
-
