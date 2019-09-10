@@ -6050,6 +6050,14 @@ a.text-dark:hover, a.text-dark:focus {
     background-color: #99CED3;
     border-color: #99CED3; }
 
+.btn-secondary {
+  color: #fff;
+  background-color: #99CED3;
+  border-color: #99CED3; }
+
+.dropdown-menu {
+  background-color: #4D6D9A; }
+
 /*********************/
 /**** LOGIN **********/
 /*********************/
@@ -6081,6 +6089,7 @@ a.text-dark:hover, a.text-dark:focus {
 
 .sp-body {
   padding: 20px 20px 0 20px; }
+<<<<<<< HEAD
 .col-sm-4, .form-control{
   display:inline-block;
 }
@@ -6090,4 +6099,55 @@ a.text-dark:hover, a.text-dark:focus {
 .form-button{
   text-align: center;
 }
+=======
+
+/****************************/
+/**** Contracts.html **********/
+/****************************/
+.box {
+  width: 20px;
+  height: 20px;
+  display: inline-block; }
+  .box-yellow {
+    background-color: yellow; }
+  .box-red {
+    background-color: red; }
+  .box-green {
+    background-color: green; }
+
+.contracts-row-filter {
+  display: inline-block; }
+
+.contracts-row-boxes {
+  display: inline-block; }
+  .contracts-row-boxes div {
+    margin-left: 8px; }
+
+.contracts-table {
+  margin-top: 25px; }
+  .contracts-table-header {
+    background-color: #5F6366;
+    color: #fff;
+    font-size: 75%; }
+
+/****************************/
+/**** contracts_details.html **********/
+/****************************/
+.contracts-details-header *-main h3 {
+  margin-bottom: 0; }
+
+.contracts-details-header *-main p {
+  margin-bottom: 0; }
+
+.contracts-details-header *-minor {
+  display: inline-block;
+  margin-top: 20px; }
+
+.contracts-update-major a {
+  margin-right: 10px; }
+
+#minor-update-datetime {
+  width: 250px; }
+
+>>>>>>> 4df83fba2a28f58e1d3a7b039b566cc9b25b94bc
 /*# sourceMappingURL=main.css.map */
