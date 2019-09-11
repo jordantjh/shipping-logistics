@@ -7,20 +7,21 @@
     <div class="sp-body-title">
         <h1>Contracts</h1>
     </div>
-    {{filter_param}}
     <div class="sp-body-content">
         <div class="contracts-row">
             <div class="contracts-row-filter">
                 Filter by
                 <select id="filter-by" onchange="filterChanged();">
                     <option value="all">All</option>
-                    <option value="dock-confirmed">
+                    <option value="dock-confirmed" {% ifequal filter_param 'dock-confirmed' %}selected{% endifequal %}>
                         DOCK-Confirmed</option>
-                    <option value="appt-confirmed">
+                    <option value="appt-confirmed" {% ifequal filter_param 'appt-confirmed' %}selected{% endifequal %}>
                         Appointment-Confirmed</option>
-                    <option value="delivery-confirmed">
+                    <option value="delivery-confirmed"
+                        {% ifequal filter_param 'delivery-confirmed' %}selected{% endifequal %}>
                         Delivery-Confirmed</option>
-                    <option value="canceled">Canceled</option>
+                    <option value="canceled" {% ifequal filter_param 'canceled' %}selected{% endifequal %}>
+                        Canceled</option>
                 </select>
             </div>
             <div class="contracts-row-boxes float-right">
