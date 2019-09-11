@@ -25,30 +25,30 @@ class Contract(models.Model):
     status = models.CharField(max_length=20)
 
 class ContractUpdate(models.Model):
-    contract_id = models.ForeignKey('Contracts', on_delete=models.CASCADE)
+    contract_id = models.ForeignKey('Contract', on_delete=models.CASCADE)
     author = models.CharField(max_length=25)
     event_name = models.CharField(max_length=25)
     event_time = models.DateTimeField(blank=True, null=True)
     time_added = models.DateTimeField(blank=True, null=True)
 
 class AppointmentConfirmed(models.Model):
-    contract_id = models.ForeignKey('Contracts', on_delete=models.CASCADE)
+    contract_id = models.ForeignKey('Contract', on_delete=models.CASCADE)
     appt_date = models.DateTimeField(blank=True, null=True)
     appt_by_user = models.CharField(max_length=25)
-    comment = models.CharField(blank=True, null=True)
+    comment = models.CharField(max_length=25)
 
 class DockConfirmed(models.Model):
-    contract_id = models.ForeignKey('Contracts', on_delete=models.CASCADE)
+    contract_id = models.ForeignKey('Contract', on_delete=models.CASCADE)
     appt_by_user = models.DateTimeField(blank=True, null=True)
     signed_by = models.CharField(max_length=25)
     condition_comment = models.CharField(max_length=25)
 
 class DeliveryConfirmed(models.Model):
-    contract_id = models.ForeignKey('Contracts', on_delete=models.CASCADE)
+    contract_id = models.ForeignKey('Contract', on_delete=models.CASCADE)
     delivery_datetime = models.DateTimeField(blank=True, null=True)
     signed_by = models.CharField(max_length=25)
     condition_comment = models.CharField(max_length=25)
-    signed_by = models.ImageField(upload to'pods/')
+    signed_by = models.ImageField(upload_to='pods/')
 
 class ServiceProvider(models.Model):
     name = models.CharField(max_length=30)

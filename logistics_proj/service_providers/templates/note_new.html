@@ -1,5 +1,5 @@
 
-<{% extends 'partials/sp_base.html' %}
+{% extends 'partials/sp_base.html' %}
 
 {% block title %}SBA | Index{% endblock %}
 
@@ -11,8 +11,8 @@
 
     </div>
 
-    <form>
-
+    <form method="POST">
+        {% csrf_token %}
         <div class="form-inline" >
             <label for="content" class="col-sm-4 col-form-label">Note:</label>
             <textarea type="" class="form-control" id="content"  ></textarea>
@@ -23,7 +23,7 @@
         </div>
         <br><br>
         <div class="form-button">
-                <button type="submit" class="btn btn-primary" >Save</button>
+                <button type="submit" class="btn btn-primary"value="SPNote" >Save</button>
                 <button type="cancel" class="btn btn-primary">Cancel</button>
 
         </div>
