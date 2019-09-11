@@ -6,7 +6,17 @@ from .models import Contract, ContractUpdate
 
 
 def contractsView(req):
-    contracts = Contract.objects.all()
+    filter_by_param = req.GET.get('filterby', '')  # '' if not found
+    if filter_by_param == 'dock-confirmed':
+        contracts = Contract.objects.filter(dock_confirmed=True)
+    elif filter_by_param == 'appointment-confirmed':
+        contracts = Contract.objects.filter(appointment_confirmed=True)
+    elif filter_by_param == 'delivery-confirmed':
+        contracts = Contract.objects.filter(delivery_confirmed=True)
+    elif filter_by_param == 'canceled':
+        contracts = Contract.objects.filter(is_canceled=True)
+    else:
+        contracts = Contract.objects.all()
     return render(req, 'contracts.html', {'contracts': contracts})
 
 

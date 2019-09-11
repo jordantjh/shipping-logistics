@@ -1,3 +1,4 @@
 function test() {
-    console.log("Test function has run!");
+    param = document.getElementById("filter-by").value;
+    window.location.replace("/?filterby=" + param);
 }
