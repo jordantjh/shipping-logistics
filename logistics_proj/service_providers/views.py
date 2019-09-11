@@ -32,7 +32,8 @@ def contractsDetailsView(req, contract_id):
     event_name = req.POST['update-event']
     event_time_raw = req.POST['update-datetime']
     event_time_datetime = datetime.strptime(
-        event_time_raw, "%Y/%m/%d %H:%M").date()
+        event_time_raw, "%Y/%m/%d %H:%M")
+
     target_contract = Contract.objects.get(pk=contract_id)
 
     if event_name == 'dock-confirmed':
