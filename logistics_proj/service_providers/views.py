@@ -103,7 +103,31 @@ def milestonesView(req, contract_id):
             contract_id=contract_id).order_by('-event_time')
     except ContractUpdate.DoesNotExist:
         contract_updates = None
-    return render(req, 'milestones.html', {'contract_num': contract_num, 'contract_updates': contract_updates})
+
+    try:
+        dock_confirmed_obj = DockConfirmed.objects.get(id=contract_id)
+    except DockConfirmed.DoesNotExist:
+        dock_confirmed_obj = None
+
+    try:
+        appt_confirmed_obj = AppointmentConfirmed.objects.get(id=contract_id)
+    except AppointmentConfirmed.DoesNotExist:
+        appt_confirmed_obj = None
+
+    try:
+        delivery_confirmed_obj = DeliveryConfirmed.objects.get(id=contract_id)
+    except DeliveryConfirmed.DoesNotExist:
+        delivery_confirmed_obj = None
+
+    context = {
+        'contract_num': contract_num,
+        'contract_updates': contract_updates,
+        'dock_confirmed_obj': dock_confirmed_obj,
+        'appt_confirmed_obj': appt_confirmed_obj,
+        'delivery_confirmed_obj': delivery_confirmed_obj,
+    }
+
+    return render(req, 'milestones.html', context)
 
 
 def service_pView(req):
