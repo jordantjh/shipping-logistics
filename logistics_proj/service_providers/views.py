@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.contrib import messages
+from datetime import datetime
 
 from .models import Contract, ContractUpdate
 
@@ -21,6 +23,18 @@ def contractsView(req):
 
 
 def contractsDetailsView(req, contract_id):
+    if req.method == "GET":
+        contract = Contract.objects.get(id=contract_id)
+        return render(req, 'contracts_details.html', {'contract': contract})
+
+    # POST request
+    event_name = req.POST['update-event']
+    event_time_raw = req.POST['update-datetime']
+    event_time_datetime = datetime.strptime(
+        event_time_raw, "%Y/%m/%d %H:%M").date()
+
+    messages.success(
+        req, 'Update has been successfully added.', extra_tags='text-success')
     contract = Contract.objects.get(id=contract_id)
     return render(req, 'contracts_details.html', {'contract': contract})
 

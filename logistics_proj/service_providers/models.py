@@ -44,16 +44,16 @@ class AppointmentConfirmed(models.Model):
 
 class DockConfirmed(models.Model):
     contract_id = models.ForeignKey('Contract', on_delete=models.CASCADE)
-    appt_by_user = models.DateTimeField(blank=True, null=True)
+    delivery_datetime = models.DateTimeField(blank=True, null=True)
     signed_by = models.CharField(max_length=25)
-    condition_comment = models.CharField(max_length=25)
+    condition_comment = models.CharField(max_length=50)
 
 
 class DeliveryConfirmed(models.Model):
     contract_id = models.ForeignKey('Contract', on_delete=models.CASCADE)
     delivery_datetime = models.DateTimeField(blank=True, null=True)
     signed_by = models.CharField(max_length=25)
-    condition_comment = models.CharField(max_length=25)
+    condition_comment = models.CharField(max_length=50)
     signed_pod = models.ImageField(upload_to='pods/')
 
 
