@@ -7,15 +7,16 @@
 
     <div class="title" align="center">
         Contacts List
-        <button type="button" class="btn btn-default btn-circle" href="#">+</button>
+        <a  class="btn btn-primary btn-lg active" href="{% url 'sp:contacts'%}" >+</a>
     </div>
     <div class="sp-body">
         <div class="list-group">
-            <a href="#" class="list-group-item list-group-item-action action">Cras justo odio</a>
-            <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-            <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
-            <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
-            <a href="#" class="list-group-item list-group-item-action disabled">Vestibulum at eros</a>
+            {% for contact in contacts  %}
+            <br>
+            <a href=""class="list-group-item list-group-item-action action">{{contact.name}} </a>
+            {{ post }}
+            {% endfor %}
+
         </div>
     </div>
 
