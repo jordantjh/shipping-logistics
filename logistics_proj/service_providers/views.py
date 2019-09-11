@@ -99,7 +99,7 @@ def contractsDetailsView(req, contract_id):
 def milestonesView(req, contract_id):
     contract_num = Contract.objects.get(id=contract_id).num
     try:
-        contract_updates = ContractUpdate.objects.get(
+        contract_updates = ContractUpdate.objects.filter(
             contract_id=contract_id).order_by('-event_time')
     except ContractUpdate.DoesNotExist:
         contract_updates = None

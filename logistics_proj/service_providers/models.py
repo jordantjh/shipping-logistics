@@ -30,9 +30,10 @@ class Contract(models.Model):
 class ContractUpdate(models.Model):
     contract_id = models.ForeignKey('Contract', on_delete=models.CASCADE)
     author = models.CharField(max_length=25)
-    event_name = models.CharField(max_length=25)
+    event_name = models.CharField(max_length=100)
     event_time = models.DateTimeField(blank=True, null=True)
-    time_added = models.DateTimeField(blank=True, null=True)
+    time_added = models.DateTimeField(
+        default=datetime.now, blank=True, null=True)
 
 
 class AppointmentConfirmed(models.Model):
@@ -40,6 +41,8 @@ class AppointmentConfirmed(models.Model):
     appt_date = models.DateTimeField(blank=True, null=True)
     appt_by_user = models.CharField(max_length=25)
     comment = models.TextField(blank=True, null=True)
+    time_added = models.DateTimeField(
+        default=datetime.now, blank=True, null=True)
 
 
 class DockConfirmed(models.Model):
@@ -47,6 +50,8 @@ class DockConfirmed(models.Model):
     delivery_datetime = models.DateTimeField(blank=True, null=True)
     signed_by = models.CharField(max_length=25)
     condition_comment = models.CharField(max_length=50)
+    time_added = models.DateTimeField(
+        default=datetime.now, blank=True, null=True)
 
 
 class DeliveryConfirmed(models.Model):
@@ -55,6 +60,8 @@ class DeliveryConfirmed(models.Model):
     signed_by = models.CharField(max_length=25)
     condition_comment = models.CharField(max_length=50)
     signed_pod = models.ImageField(upload_to='pods/')
+    time_added = models.DateTimeField(
+        default=datetime.now, blank=True, null=True)
 
 
 class ServiceProvider(models.Model):
@@ -72,6 +79,8 @@ class ServiceProvider(models.Model):
 class SPNote(models.Model):
     content = models.CharField(max_length=30)
     author = models.CharField(max_length=30)
+    time_added = models.DateTimeField(
+        default=datetime.now, blank=True, null=True)
 
 
 class SPContact(models.Model):
@@ -83,3 +92,5 @@ class SPContact(models.Model):
     phone = models.CharField(max_length=30)
     email = models.CharField(max_length=30)
     timezone = models.CharField(max_length=30)
+    time_added = models.DateTimeField(
+        default=datetime.now, blank=True, null=True)

@@ -8,7 +8,8 @@
 {% endif %}
 
 {% for contract_update in contract_updates %}
-<p>"event name" @ "event time"</p>
-<p>added "time_added" by "author name"</p>
+<p><span style="color:#4D6D9A;font-weight:bolder;">{{ contract_update.event_name }}</span> @
+    {{ contract_update.event_time }}</p>
+<p>added into system by <b>{{ contract_update.author }}</b> at {{ contract_update.time_added }}.</p>
 <hr>
 {% endfor %}
