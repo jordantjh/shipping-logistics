@@ -48,6 +48,7 @@ def contractsDetailsView(req, contract_id):
         )
 
         setattr(target_contract, 'latest_update', 'Dock-confirmed')
+        setattr(target_contract, 'dock-confirmed', True)
         target_contract.save()
 
     elif event_name == 'appt-confirmed':
@@ -62,6 +63,7 @@ def contractsDetailsView(req, contract_id):
         )
 
         setattr(target_contract, 'latest_update', 'Appointment-confirmed')
+        setattr(target_contract, 'appt-confirmed', True)
         target_contract.save()
 
     elif event_name == 'delivery-confirmed':
@@ -78,6 +80,7 @@ def contractsDetailsView(req, contract_id):
         )
 
         setattr(target_contract, 'latest_update', 'Delivery-confirmed')
+        setattr(target_contract, 'delivery-confirmed', True)
         target_contract.save()
 
     else:
@@ -98,34 +101,16 @@ def contractsDetailsView(req, contract_id):
 
 
 def milestonesView(req, contract_id):
-    contract_num = Contract.objects.get(id=contract_id).num
+    contract = Contract.objects.get(id=contract_id)
     try:
         contract_updates = ContractUpdate.objects.filter(
             contract_id=contract_id).order_by('-event_time')
     except ContractUpdate.DoesNotExist:
         contract_updates = None
 
-    try:
-        dock_confirmed_obj = DockConfirmed.objects.get(id=contract_id)
-    except DockConfirmed.DoesNotExist:
-        dock_confirmed_obj = None
-
-    try:
-        appt_confirmed_obj = AppointmentConfirmed.objects.get(id=contract_id)
-    except AppointmentConfirmed.DoesNotExist:
-        appt_confirmed_obj = None
-
-    try:
-        delivery_confirmed_obj = DeliveryConfirmed.objects.get(id=contract_id)
-    except DeliveryConfirmed.DoesNotExist:
-        delivery_confirmed_obj = None
-
     context = {
-        'contract_num': contract_num,
+        'contract': contract,
         'contract_updates': contract_updates,
-        'dock_confirmed_obj': dock_confirmed_obj,
-        'appt_confirmed_obj': appt_confirmed_obj,
-        'delivery_confirmed_obj': delivery_confirmed_obj,
     }
 
     return render(req, 'milestones.html', context)
