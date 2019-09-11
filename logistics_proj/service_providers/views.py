@@ -11,7 +11,7 @@ def contractsView(req):
     filter_by_param = req.GET.get('filterby', '')  # '' if not found
     if filter_by_param == 'dock-confirmed':
         contracts = Contract.objects.filter(dock_confirmed=True)
-    elif filter_by_param == 'appointment-confirmed':
+    elif filter_by_param == 'appt-confirmed':
         contracts = Contract.objects.filter(appointment_confirmed=True)
     elif filter_by_param == 'delivery-confirmed':
         contracts = Contract.objects.filter(delivery_confirmed=True)
