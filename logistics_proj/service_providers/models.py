@@ -24,6 +24,7 @@ class Contract(models.Model):
     booker_name = models.CharField(max_length=35)
     status = models.CharField(max_length=20)
     latest_update = models.CharField(max_length=100, blank=True, null=True)
+    is_canceled = models.BooleanField(default=False)
 
 
 class ContractUpdate(models.Model):
