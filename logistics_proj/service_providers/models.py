@@ -24,14 +24,16 @@ class Contract(models.Model):
     booker_name = models.CharField(max_length=35)
     status = models.CharField(max_length=20)
     latest_update = models.CharField(max_length=100, blank=True, null=True)
+    is_canceled = models.BooleanField(default=False)
 
 
 class ContractUpdate(models.Model):
     contract_id = models.ForeignKey('Contract', on_delete=models.CASCADE)
     author = models.CharField(max_length=25)
-    event_name = models.CharField(max_length=25)
+    event_name = models.CharField(max_length=100)
     event_time = models.DateTimeField(blank=True, null=True)
-    time_added = models.DateTimeField(blank=True, null=True)
+    time_added = models.DateTimeField(
+        default=datetime.now, blank=True, null=True)
 
 
 class AppointmentConfirmed(models.Model):
@@ -40,21 +42,33 @@ class AppointmentConfirmed(models.Model):
     appt_by_user = models.CharField(max_length=25)
 
     comment = models.TextField(blank=True, null=True)
+    time_added = models.DateTimeField(
+        default=datetime.now, blank=True, null=True)
 
 
 
 class DockConfirmed(models.Model):
     contract_id = models.ForeignKey('Contract', on_delete=models.CASCADE)
-    appt_by_user = models.DateTimeField(blank=True, null=True)
+    delivery_datetime = models.DateTimeField(blank=True, null=True)
     signed_by = models.CharField(max_length=25)
-    condition_comment = models.CharField(max_length=25)
+    condition_comment = models.CharField(max_length=50)
+    time_added = models.DateTimeField(
+        default=datetime.now, blank=True, null=True)
 
 
 class DeliveryConfirmed(models.Model):
     contract_id = models.ForeignKey('Contract', on_delete=models.CASCADE)
     delivery_datetime = models.DateTimeField(blank=True, null=True)
     signed_by = models.CharField(max_length=25)
+<<<<<<< HEAD
     condition_comment = models.CharField(max_length=25)
+=======
+    condition_comment = models.CharField(max_length=50)
+    signed_pod = models.ImageField(upload_to='pods/')
+    time_added = models.DateTimeField(
+        default=datetime.now, blank=True, null=True)
+
+>>>>>>> 357ef95dfb30ad6fccf08569c1f3eab7bd1f193d
 
 class ServiceProvider(models.Model):
     name = models.CharField(max_length=30)
@@ -71,6 +85,8 @@ class ServiceProvider(models.Model):
 class SPNote(models.Model):
     content = models.CharField(max_length=30)
     author = models.CharField(max_length=30)
+    time_added = models.DateTimeField(
+        default=datetime.now, blank=True, null=True)
 
 
 class SPContact(models.Model):
@@ -82,3 +98,5 @@ class SPContact(models.Model):
     phone = models.CharField(max_length=30)
     email = models.CharField(max_length=30)
     timezone = models.CharField(max_length=30)
+    time_added = models.DateTimeField(
+        default=datetime.now, blank=True, null=True)

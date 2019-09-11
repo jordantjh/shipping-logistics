@@ -11,14 +11,12 @@
         <div class="contracts-row">
             <div class="contracts-row-filter">
                 Filter by
-                <select>
-                    <option>All Active</option>
-                    <option>Non-Processed</option>
-                    <option>Accepted</option>
-                    <option>DOCK-Confirmed</option>
-                    <option>Appointment-Confirmed</option>
-                    <option>Delivery-Confirmed</option>
-                    <option>Canceled</option>
+                <select id="filter-by" onchange="filterChanged();">
+                    <option value="all">All</option>
+                    <option value="dock-confirmed">DOCK-Confirmed</option>
+                    <option value="appt-confirmed">Appointment-Confirmed</option>
+                    <option value="delivery-confirmed">Delivery-Confirmed</option>
+                    <option value="canceled">Canceled</option>
                 </select>
             </div>
             <div class="contracts-row-boxes float-right">
@@ -28,7 +26,7 @@
             </div>
         </div>
 
-        <table class="table contracts-table">
+        <table class="table table-bordered contracts-table">
             <thead class="contracts-table-header">
                 <tr>
                     <th scope="col">Contract #</th>
@@ -38,9 +36,9 @@
                     <th scope="col">Consignee Name</th>
                     <th scope="col">ETA DOCK</th>
                     <th scope="col">DOCK Confirmed</th>
-                    <th scope="col">Appointment Confirmed</th>
+                    <th scope="col">Appt Confirmed</th>
                     <th scope="col">Delivery Confirmed</th>
-                    <th scope="col">Update</th>
+                    <th scope="col">Canceled</th>
                 </tr>
             </thead>
             <tbody>
@@ -52,10 +50,11 @@
                     <td>{{ contract.service }}</td>
                     <td>{{ contract.service_provider }}</td>
                     <td>{{ contract.consignee_name }}</td>
+                    <td>{% firstof contract.eta_dock|date:'Y-m-d H:i' '' %}</td>
                     <td>{{ contract.dock_confirmed }}</td>
                     <td>{{ contract.appointment_confirmed }}</td>
                     <td>{{ contract.delivery_confirmed }}</td>
-                    <td>{{ contract.latest_update }}</td>
+                    <td>{{ contract.is_canceled }}</td>
                 </tr>
                 {% endfor %}
             </tbody>

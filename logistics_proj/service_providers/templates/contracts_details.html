@@ -10,45 +10,64 @@
         <p><a href="{% url 'sp:milestones' contract.id %}">see Milestones</a></p>
     </div>
     <div class="contracts-details-header-minor">
-        <ul>
-            <li>Account ID #: {{ contract.account_id_num }}123</li>
-            <li>Account Name: {{ contract.account_name }}</li>
-            <li>Account Ref #: {{ contract.account_ref_num }}</li>
-            <li>Service: {{ contract.service }}</li> <!-- Final Mile Only-->
-            <li>Service Type: <u>{{ contract.service_type }}</u></li>
-            <!--Signature Plus-->
-            <li>Status: {{ contract.status }}</li>
-            <li>Booker Name: {{ contract.booker_name }}</li>
-            <li>Terminal: {{ contract.terminal }}</li>
-            <li>Contract Entered Date: {{ contract.time_added }}</li>
-        </ul>
+        <div class="row">
+            <div class="col-6">
+                <ul>
+                    <li><b>Account ID #:</b> {{ contract.account_id_num }}123</li>
+                    <li><b>Account Ref #:</b> {{ contract.account_ref_num }}</li>
+                    <li><b>Service Type:</b> <u>{{ contract.service_type }}</u></li>
+                    <li><b>Booker Name:</b> {{ contract.booker_name }}</li>
+                    <li><b>Contract Entered Date:</b> {{ contract.time_added }}</li>
+                </ul>
+            </div>
+            <div class="col-6">
+                <ul>
+                    <li><b>Account Name:</b> {{ contract.account_name }}</li>
+                    <li><b>Service:</b> {{ contract.service }}</li> <!-- Final Mile Only-->
+                    <li><b>Status:</b> {{ contract.status }}</li>
+                    <!--Signature Plus-->
+                    <li><b>Terminal:</b> {{ contract.terminal }}</li>
+                </ul>
+            </div>
+        </div>
     </div>
 
     <hr>
 
     <div class="contracts-update">
         <h3>Updates</h3>
-        <form>
-            <select name="minor-update-event">
+        <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+            <select name="update-event" id="update-select" onchange="updateFormChanged();">
                 <option value="">-- select an update --</option>
                 <option value="dock-confirmed">DOCK-Confirmed</option>
                 <option value="appt-confirmed">Appointment-Confirmed</option>
                 <option value="delivery-confirmed">Delivery-Confirmed</option>
-                <option>Attempted Delivery - Item Refused</option>
-                <option>Attempted Delivery - Location Inaccessible</option>
-                <option>Attempted Delivery - Nobody Home</option>
-                <option>Bad Phone Number</option>
-                <option>Contacted Consignee - Delivery Scheduled</option>
-                <option>Contacted Consignee - Awaiting Consignee Instruction</option>
-                <option>Delivered at Consignee - No Exception Noted</option>
-                <option>Delivered at Consignee With Damage</option>
-                <option>Delivered at Consignee With Overage</option>
-                <option>Delivered at Consignee With Shortage</option>
+                <option value="Attempted Delivery - Item Refused">Attempted Delivery - Item Refused</option>
+                <option value="Attempted Delivery - Location Inaccessible">Attempted Delivery - Location Inaccessible
+                </option>
+                <option value="Attempted Delivery - Nobody Home">Attempted Delivery - Nobody Home</option>
+                <option value="Bad Phone Number">Bad Phone Number</option>
+                <option value="Contacted Consignee - Delivery Scheduled">Contacted Consignee - Delivery Scheduled
+                </option>
+                <option value="Contacted Consignee - Awaiting Consignee Instruction">Contacted Consignee - Awaiting
+                    Consignee Instruction</option>
+                <option value="Delivered at Consignee - No Exception Noted">Delivered at Consignee - No Exception Noted
+                </option>
+                <option value="Delivered at Consignee With Damage">Delivered at Consignee With Damage</option>
+                <option value="Delivered at Consignee With Overage">Delivered at Consignee With Overage</option>
+                <option value="Delivered at Consignee With Shortage">Delivered at Consignee With Shortage</option>
             </select>
-            <input type="text" id="minor-update-datetime" name="minor-update-datetime"
-                placeholder="DD/MM/YYYY HH:MM AM/PM">
-            <input type="submit" class="btn btn-primary" value="Add Update">
+            <input type="text" id="update-datetime" name="update-datetime" placeholder="YYYY/MM/DD HH:MM" required>
+            <div id="form-add-div"></div>
+            <p><input type="submit" class="btn btn-primary margin-top-tiny" value="Add Update"></p>
         </form>
+        {% if messages %}
+        {% for msg in messages %}
+        <div class="{{ msg.tags }}">
+            {{ msg }}
+        </div>
+        {% endfor %}
+        {% endif %}
     </div>
 </div>
 {% endblock %}

@@ -3,6 +3,15 @@
 // Brand colors: $brand_blue, $brand_grey, $brand_purple, $brand_teal, $brand_pink
 
 /*******************************/
+/**** GENERIC REUSABLES*********/
+/*******************************/
+.margin-top{
+    &-tiny{margin-top: 5px;}
+    &-small{margin-top: 10px;}
+    &-medium{margin-top: 15px;}
+}
+
+/*******************************/
 /**** BOOTRSTRAP OVERWRITE******/
 /*******************************/
 .btn-primary {
@@ -117,6 +126,7 @@
 
 .contracts-table{
     margin-top: 25px;
+    text-align: center;
 
     &-header{
         background-color: $brand_grey;
@@ -142,6 +152,6 @@
     }
 }
 
-#minor-update-datetime{
+#update-datetime{
     width: 250px;
 }
