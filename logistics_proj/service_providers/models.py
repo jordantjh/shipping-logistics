@@ -23,6 +23,8 @@ class Contract(models.Model):
     account_ref_num = models.CharField(max_length=20)
     booker_name = models.CharField(max_length=35)
     status = models.CharField(max_length=20)
+    latest_update = models.CharField(max_length=100, blank=True, null=True)
+
 
 class ContractUpdate(models.Model):
     contract_id = models.ForeignKey('Contract', on_delete=models.CASCADE)
@@ -31,11 +33,15 @@ class ContractUpdate(models.Model):
     event_time = models.DateTimeField(blank=True, null=True)
     time_added = models.DateTimeField(blank=True, null=True)
 
+
 class AppointmentConfirmed(models.Model):
     contract_id = models.ForeignKey('Contract', on_delete=models.CASCADE)
     appt_date = models.DateTimeField(blank=True, null=True)
     appt_by_user = models.CharField(max_length=25)
-    comment = models.CharField(max_length=25)
+
+    comment = models.TextField(blank=True, null=True)
+
+
 
 class DockConfirmed(models.Model):
     contract_id = models.ForeignKey('Contract', on_delete=models.CASCADE)
@@ -43,12 +49,12 @@ class DockConfirmed(models.Model):
     signed_by = models.CharField(max_length=25)
     condition_comment = models.CharField(max_length=25)
 
+
 class DeliveryConfirmed(models.Model):
     contract_id = models.ForeignKey('Contract', on_delete=models.CASCADE)
     delivery_datetime = models.DateTimeField(blank=True, null=True)
     signed_by = models.CharField(max_length=25)
     condition_comment = models.CharField(max_length=25)
-    signed_by = models.ImageField(upload_to='pods/')
 
 class ServiceProvider(models.Model):
     name = models.CharField(max_length=30)
@@ -61,9 +67,11 @@ class ServiceProvider(models.Model):
     email = models.CharField(max_length=30)
     timezone = models.CharField(max_length=30)
 
+
 class SPNote(models.Model):
     content = models.CharField(max_length=30)
     author = models.CharField(max_length=30)
+
 
 class SPContact(models.Model):
     title = models.CharField(max_length=30)
@@ -74,4 +82,3 @@ class SPContact(models.Model):
     phone = models.CharField(max_length=30)
     email = models.CharField(max_length=30)
     timezone = models.CharField(max_length=30)
-

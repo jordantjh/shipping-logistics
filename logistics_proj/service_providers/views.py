@@ -1,15 +1,32 @@
 from django.shortcuts import render
 from django.shortcuts import render,get_object_or_404,redirect
 from .models import *
+
+
+from .models import Contract, ContractUpdate
+
+
 # Create your views here.
 
 
 def contractsView(req):
-    return render(req, 'contracts.html')
+    contracts = Contract.objects.all()
+    return render(req, 'contracts.html', {'contracts': contracts})
 
 
-def contractsDetailsView(req, pk):
-    return render(req, 'contracts_details.html')
+def contractsDetailsView(req, contract_id):
+    contract = Contract.objects.get(id=contract_id)
+    return render(req, 'contracts_details.html', {'contract': contract})
+
+
+def milestonesView(req, contract_id):
+    contract_num = Contract.objects.get(id=contract_id).num
+    try:
+        contract_updates = ContractUpdate.objects.get(
+            contract_id=contract_id).order_by('-event_time')
+    except ContractUpdate.DoesNotExist:
+        contract_updates = None
+    return render(req, 'milestones.html', {'contract_num': contract_num, 'contract_updates': contract_updates})
 
 
 def service_pView(req):
@@ -18,7 +35,7 @@ def service_pView(req):
 
 def notesView(req):
     notes = SPNote.objects.all()
-    return render(req, 'notes.html', {'notes': notes})
+    return render(req, 'notes_list.html', {'notes': notes})
 
 
 
@@ -29,7 +46,7 @@ def noteDetailsView(req, pk):
 
 
 def contactsView(req):
-    contacts = SPContact.objects
+    contacts = SPContact.ob
     return render(req, 'contacts.html', {'contacts': contacts})
 
 
@@ -45,7 +62,7 @@ def noteAdd(req):
             print("object created")
             note.content = req.POST.get('content')
             note.author = req.POST.get('author')
-            note.save()
+            note.save(commit=False)
             print("saved")
 
 

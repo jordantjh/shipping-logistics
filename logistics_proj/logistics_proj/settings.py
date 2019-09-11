@@ -132,3 +132,6 @@ STATICFILES_FINDERS = [
 ]
 # where to look for generated .css files
 SASS_PROCESSOR_ROOT = os.path.join(BASE_DIR, 'static/')
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')

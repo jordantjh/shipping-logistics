@@ -44,24 +44,20 @@
                 </tr>
             </thead>
             <tbody>
+                {% for contract in contracts %}
                 <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
+                    <th scope="row"><a href="{% url 'sp:contracts_details' contract.id %}">{{ contract.num }}</a>
+                    </th>
+                    <td>{{ contract.terminal }}</td>
+                    <td>{{ contract.service }}</td>
+                    <td>{{ contract.service_provider }}</td>
+                    <td>{{ contract.consignee_name }}</td>
+                    <td>{{ contract.dock_confirmed }}</td>
+                    <td>{{ contract.appointment_confirmed }}</td>
+                    <td>{{ contract.delivery_confirmed }}</td>
+                    <td>{{ contract.latest_update }}</td>
                 </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                </tr>
+                {% endfor %}
             </tbody>
         </table>
     </div>
