@@ -19,7 +19,7 @@ def contractsView(req):
         contracts = Contract.objects.filter(is_canceled=True)
     else:
         contracts = Contract.objects.all()
-    return render(req, 'contracts.html', {'contracts': contracts})
+    return render(req, 'contracts.html', {'contracts': contracts, 'filter_param': filter_by_param})
 
 
 def contractsDetailsView(req, contract_id):
@@ -57,8 +57,8 @@ def contractsDetailsView(req, contract_id):
         AppointmentConfirmed.objects.create(
             contract_id=target_contract,
             appt_date=event_time_datetime,
-            appt_comment=signed_by,
-            comment=condition_comment
+            appt_by_user=appt_by_user,
+            comment=appt_comment,
         )
 
         setattr(target_contract, 'latest_update', 'Appointment-confirmed')
