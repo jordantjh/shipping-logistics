@@ -6,7 +6,15 @@
 <div class="contracts-details-header sp-body">
     <div class="contracts-details-header-main">
         <h3>Contract #: {{ contract.num }}</h3>
-        <p>Status: <span>{{ contract.status }}</span></p>
+        <p>Status:
+            <span>
+                {% if contract.is_canceled %}
+                <span style="color:red;">Canceled</span>
+                {%elif contract.delivery_confirmed%}
+                <span style="color:green;">Completed</span>
+                {%else%}Active{%endif%}
+            </span>
+        </p>
         <p><a href="{% url 'sp:milestones' contract.id %}" target="_blank">generate Milestones</a></p>
     </div>
     <div class="contracts-details-header-minor">
