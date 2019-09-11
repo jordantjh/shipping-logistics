@@ -22,7 +22,6 @@ class Contract(models.Model):
     account_name = models.CharField(max_length=25)
     account_ref_num = models.CharField(max_length=20)
     booker_name = models.CharField(max_length=35)
-    status = models.CharField(max_length=20)
     latest_update = models.CharField(max_length=100, blank=True, null=True)
     is_canceled = models.BooleanField(default=False)
 

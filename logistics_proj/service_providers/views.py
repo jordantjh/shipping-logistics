@@ -15,7 +15,7 @@ def contractsView(req):
     filter_by_param = req.GET.get('filterby', '')  # '' if not found
     if filter_by_param == 'dock-confirmed':
         contracts = Contract.objects.filter(dock_confirmed=True)
-    elif filter_by_param == 'appointment-confirmed':
+    elif filter_by_param == 'appt-confirmed':
         contracts = Contract.objects.filter(appointment_confirmed=True)
     elif filter_by_param == 'delivery-confirmed':
         contracts = Contract.objects.filter(delivery_confirmed=True)
@@ -23,7 +23,7 @@ def contractsView(req):
         contracts = Contract.objects.filter(is_canceled=True)
     else:
         contracts = Contract.objects.all()
-    return render(req, 'contracts.html', {'contracts': contracts})
+    return render(req, 'contracts.html', {'contracts': contracts, 'filter_param': filter_by_param})
 
 
 def contractsDetailsView(req, contract_id):
@@ -52,6 +52,7 @@ def contractsDetailsView(req, contract_id):
         )
 
         setattr(target_contract, 'latest_update', 'Dock-confirmed')
+        setattr(target_contract, 'dock-confirmed', True)
         target_contract.save()
 
     elif event_name == 'appt-confirmed':
@@ -61,11 +62,12 @@ def contractsDetailsView(req, contract_id):
         AppointmentConfirmed.objects.create(
             contract_id=target_contract,
             appt_date=event_time_datetime,
-            appt_comment=signed_by,
-            comment=condition_comment
+            appt_by_user=appt_by_user,
+            comment=appt_comment,
         )
 
         setattr(target_contract, 'latest_update', 'Appointment-confirmed')
+        setattr(target_contract, 'appt-confirmed', True)
         target_contract.save()
 
     elif event_name == 'delivery-confirmed':
@@ -82,6 +84,7 @@ def contractsDetailsView(req, contract_id):
         )
 
         setattr(target_contract, 'latest_update', 'Delivery-confirmed')
+        setattr(target_contract, 'delivery-confirmed', True)
         target_contract.save()
 
     else:
@@ -102,13 +105,19 @@ def contractsDetailsView(req, contract_id):
 
 
 def milestonesView(req, contract_id):
-    contract_num = Contract.objects.get(id=contract_id).num
+    contract = Contract.objects.get(id=contract_id)
     try:
         contract_updates = ContractUpdate.objects.filter(
             contract_id=contract_id).order_by('-event_time')
     except ContractUpdate.DoesNotExist:
         contract_updates = None
-    return render(req, 'milestones.html', {'contract_num': contract_num, 'contract_updates': contract_updates})
+
+    context = {
+        'contract': contract,
+        'contract_updates': contract_updates,
+    }
+
+    return render(req, 'milestones.html', context)
 
 
 def service_pView(req):

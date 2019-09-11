@@ -1,7 +1,26 @@
-<h2>Contract ID: {{ contract_num }}</h2>
-<br>
+<h2>Contract ID: {{ contract.num }}</h2>
 
 <!-- show DOCK/APPT/.. confirmed here if confirmed-->
+{% if contract.dock_confirmed %}
+<span style="color: green;">&#10003; DOCK-confirmed</span>
+{% else %}
+<span style="color: grey;">&#10003; DOCK-confirmed</span>
+{% endif %}
+&nbsp;->&nbsp;
+{% if contract.appointment_confirmed %}
+<span style="color: green;">&#10003; Appointment-confirmed</span>
+{% else %}
+<span style="color: grey;">&#10003; Appointment-confirmed</span>
+{% endif %}
+&nbsp;->&nbsp;
+{% if contract.delivery_confirmed %}
+<span style="color: green;">&#10003; Delivery-confirmed</span>
+{% else %}
+<span style="color: grey;">&#10003; Delivery-confirmed</span>
+{% endif %}
+<br><br><br>
+
+<!-- Contract updates below -->
 
 {% if contract_updates == None %}
 <p>No updates added.</p>
