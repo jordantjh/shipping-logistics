@@ -6,14 +6,14 @@
 <div class="sp-body">
 
     <div class="title" align="center">
-        Notes List
-        <a  class="btn btn-primary btn-lg active" href="{% url 'sp:note_new'%}" >+</a>
+        <h2>Notes List
+            <a  class="btn btn-primary btn-lg active" href="{% url 'sp:note_new'%}" >+</a></h2>
     </div>
     <div class="sp-body">
         <div class="list-group">
             {% for note in notes  %}
             <br>
-            <a href=""class="list-group-item list-group-item-action action">{{note.content}} </a>
+            <a href="{% url 'sp:note_details' note_id=note.id%}" class="list-group-item list-group-item-action action">{{note.content}} </a>
             {{ post }}
             {% endfor %}
 

@@ -1246,7 +1246,9 @@ pre {
   -ms-overflow-style: -ms-autohiding-scrollbar; }
   .table-responsive > .table-bordered {
     border: 0; }
-
+.form-button,.btn btn-primary{
+  text-align: center;
+}
 .form-control {
   display: block;
   width: 100%;
@@ -6150,3 +6152,7 @@ a.text-dark:hover, a.text-dark:focus {
   width: 250px; }
 
 /*# sourceMappingURL=main.css.map */
+
+.contact-body-title, .note-body-title{
+  text-align: center;
+}

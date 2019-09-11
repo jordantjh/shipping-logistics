@@ -60,15 +60,12 @@ class DeliveryConfirmed(models.Model):
     contract_id = models.ForeignKey('Contract', on_delete=models.CASCADE)
     delivery_datetime = models.DateTimeField(blank=True, null=True)
     signed_by = models.CharField(max_length=25)
-<<<<<<< HEAD
-    condition_comment = models.CharField(max_length=25)
-=======
     condition_comment = models.CharField(max_length=50)
     signed_pod = models.ImageField(upload_to='pods/')
     time_added = models.DateTimeField(
         default=datetime.now, blank=True, null=True)
 
->>>>>>> 357ef95dfb30ad6fccf08569c1f3eab7bd1f193d
+
 
 class ServiceProvider(models.Model):
     name = models.CharField(max_length=30)
@@ -90,13 +87,17 @@ class SPNote(models.Model):
 
 
 class SPContact(models.Model):
-    title = models.CharField(max_length=30)
+    fname = models.CharField(max_length=20)
+    lname = models.CharField(max_length=20)
+    phone = models.CharField(max_length=30)
+    off_phone = models.CharField(max_length=30)
+    off_ex=models.CharField(max_length=4)
+    fax=models.CharField(max_length=10)
+    addr = models.CharField(max_length=30)
+    email = models.CharField(max_length=30)
     country = models.CharField(max_length=30)
     city = models.CharField(max_length=30)
     state = models.CharField(max_length=30)
     zip = models.CharField(max_length=30)
-    phone = models.CharField(max_length=30)
-    email = models.CharField(max_length=30)
-    timezone = models.CharField(max_length=30)
     time_added = models.DateTimeField(
         default=datetime.now, blank=True, null=True)

@@ -6,14 +6,14 @@
 <div class="sp-body">
 
     <div class="title" align="center">
-        Contacts List
-        <a  class="btn btn-primary btn-lg active" href="{% url 'sp:contacts'%}" >+</a>
+        <h2>Contacts List
+        <a  class="btn btn-primary btn-lg active" href="{% url 'sp:contacts_new'%}" >+</a></h2>
     </div>
     <div class="sp-body">
         <div class="list-group">
             {% for contact in contacts  %}
             <br>
-            <a href=""class="list-group-item list-group-item-action action">{{contact.name}} </a>
+            <a href="{% url 'sp:contact_details' contact_id=contact.id%}"class="list-group-item list-group-item-action action">{{contact.fname}} </a>
             {{ post }}
             {% endfor %}
 
