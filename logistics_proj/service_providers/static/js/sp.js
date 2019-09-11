@@ -105,6 +105,12 @@ function updateFormChanged() {
             addDiv.appendChild(pod_div);
             break;
         default:
+            // clear div
+            child = addDiv.firstElementChild;
+            while (child) {
+                addDiv.removeChild(child);
+                child = addDiv.firstElementChild;
+            }
             break;
     }
 }

@@ -27,11 +27,25 @@ def contractsDetailsView(req, contract_id):
         contract = Contract.objects.get(id=contract_id)
         return render(req, 'contracts_details.html', {'contract': contract})
 
-    # POST request
+    ### POST request ###
+    # Grab data from form
     event_name = req.POST['update-event']
     event_time_raw = req.POST['update-datetime']
     event_time_datetime = datetime.strptime(
         event_time_raw, "%Y/%m/%d %H:%M").date()
+
+    if event_name == 'dock-confirmed':
+        signed_by = req.POST['signed_by']
+        condition_comment = req.POST['condition_comment']
+
+    elif event_name == 'appt-confirmed':
+        appt_by_user = req.POST['appt_by_user']
+        appt_comment = req.POST['appt_comment']
+
+    elif event_name == 'delivery-confirmed':
+        signed_by = req.POST['signed_by']
+        condition_comment = req.POST['condition_comment']
+        pod_upload = req.POST['pod_upload']
 
     messages.success(
         req, 'Update has been successfully added.', extra_tags='text-success')
