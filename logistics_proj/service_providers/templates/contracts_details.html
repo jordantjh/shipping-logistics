@@ -36,7 +36,7 @@
 
     <div class="contracts-update">
         <h3>Updates</h3>
-        <form method="POST">{% csrf_token %}
+        <form method="POST" enctype="multipart/form-data">{% csrf_token %}
             <select name="update-event" id="update-select" onchange="updateFormChanged();">
                 <option value="">-- select an update --</option>
                 <option value="dock-confirmed">DOCK-Confirmed</option>

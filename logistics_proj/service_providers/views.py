@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.contrib import messages
 from datetime import datetime
 
-from .models import Contract, ContractUpdate
+from .models import Contract, ContractUpdate, DockConfirmed, AppointmentConfirmed, DeliveryConfirmed
 
 # Create your views here.
 
@@ -28,24 +28,67 @@ def contractsDetailsView(req, contract_id):
         return render(req, 'contracts_details.html', {'contract': contract})
 
     ### POST request ###
-    # Grab data from form
+    # Grab data from form and create ContractUpdate object
     event_name = req.POST['update-event']
     event_time_raw = req.POST['update-datetime']
     event_time_datetime = datetime.strptime(
         event_time_raw, "%Y/%m/%d %H:%M").date()
+    target_contract = Contract.objects.get(pk=contract_id)
 
     if event_name == 'dock-confirmed':
         signed_by = req.POST['signed_by']
         condition_comment = req.POST['condition_comment']
 
+        DockConfirmed.objects.create(
+            contract_id=target_contract,
+            delivery_datetime=event_time_datetime,
+            signed_by=signed_by,
+            condition_comment=condition_comment
+        )
+
+        setattr(target_contract, 'latest_update', 'Dock-confirmed')
+        target_contract.save()
+
     elif event_name == 'appt-confirmed':
         appt_by_user = req.POST['appt_by_user']
         appt_comment = req.POST['appt_comment']
 
+        AppointmentConfirmed.objects.create(
+            contract_id=target_contract,
+            appt_date=event_time_datetime,
+            appt_comment=signed_by,
+            comment=condition_comment
+        )
+
+        setattr(target_contract, 'latest_update', 'Appointment-confirmed')
+        target_contract.save()
+
     elif event_name == 'delivery-confirmed':
         signed_by = req.POST['signed_by']
         condition_comment = req.POST['condition_comment']
-        pod_upload = req.POST['pod_upload']
+        pod_upload = req.FILES['pod_upload']
+
+        DeliveryConfirmed.objects.create(
+            contract_id=target_contract,
+            delivery_datetime=event_time_datetime,
+            signed_by=signed_by,
+            condition_comment=condition_comment,
+            signed_pod=pod_upload
+        )
+
+        setattr(target_contract, 'latest_update', 'Delivery-confirmed')
+        target_contract.save()
+
+    else:
+        ContractUpdate.objects.create(
+            contract_id=target_contract,
+            author=req.user.username,
+            event_name=event_name,
+            event_time=event_time_datetime
+        )
+
+        setattr(target_contract, 'latest_update', event_name)
+        target_contract.save()
 
     messages.success(
         req, 'Update has been successfully added.', extra_tags='text-success')
