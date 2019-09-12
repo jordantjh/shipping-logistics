@@ -25,6 +25,9 @@ class Contract(models.Model):
     latest_update = models.CharField(max_length=100, blank=True, null=True)
     is_canceled = models.BooleanField(default=False)
 
+    def __str__(self):
+        return self.num
+
 
 class ContractUpdate(models.Model):
     contract_id = models.ForeignKey('Contract', on_delete=models.CASCADE)
