@@ -1,11 +1,16 @@
+from django.shortcuts import get_object_or_404, redirect
 from django.shortcuts import render
 from django.contrib import messages
 from datetime import datetime
+from .models import *
+from django.urls import reverse
+from django.http import HttpResponseRedirect
 
 from .models import Contract, ContractUpdate, DockConfirmed, AppointmentConfirmed, DeliveryConfirmed
 
 # Create your views here.
-
+def passwordchangedView(req):
+    return render (req,'password_changed.html')
 
 def contractsView(req):
     filter_by_param = req.GET.get('filterby', '')  # '' if not found
@@ -41,10 +46,10 @@ def contractsDetailsView(req, contract_id):
         event_time_raw, "%Y/%m/%d %H:%M")
 
     target_contract = Contract.objects.get(pk=contract_id)
-
+    signed_by = req.POST['signed_by']
+    condition_comment = req.POST['condition_comment']
     if event_name == 'dock-confirmed':
-        signed_by = req.POST['signed_by']
-        condition_comment = req.POST['condition_comment']
+
 
         DockConfirmed.objects.create(
             contract_id=target_contract,
@@ -123,12 +128,119 @@ def milestonesView(req, contract_id):
 
 
 def service_pView(req):
-    return render(req, 'service_provider.html')
+    if req.method == "GET":
+        sid=1
+        sp = ServiceProvider.objects.get(id=sid)
+        return render(req, 'service_provider.html', {'sp': sp})
+
+    # POST
+    sid = 1
+    sp = ServiceProvider.objects.get(id=sid)
+    sp.name = req.POST.get('name')
+    sp.address = req.POST.get('addr')
+    sp.country = req.POST.get('country')
+    sp.city = req.POST.get('city')
+    sp.state = req.POST.get('zip')
+    sp.phone = req.POST.get('phone')
+    sp.email = req.POST.get('email')
+    sp.save()
+    sp = ServiceProvider.objects.get(id=sid)
+
+    return render(req, 'service_provider.html',{'sp': sp})
+
 
 
 def notesView(req):
-    return render(req, 'notes.html')
+    notes = SPNote.objects.all()
+    return render(req, 'notes_list.html', {'notes': notes})
+
+
+
+def noteDetailsView(req, note_id):
+    if req.method == "GET":
+        note = SPNote.objects.get(id=note_id)
+        return render(req, 'note_details.html', {'note': note})
+
+    # POST
+    note = SPNote.objects.get(id=note_id)
+    note.content = req.POST.get('content')
+    note.author = req.POST.get('author')
+    note.save()
+    notes=SPNote.objects.all()
+
+    return render(req, 'notes_list.html',{'notes': notes})
 
 
 def contactsView(req):
-    return render(req, 'contacts.html')
+    contacts = SPContact.objects.all()
+    return render(req, 'contacts_list.html', {'contacts': contacts})
+
+
+def contactDetailsView(req, contact_id):
+    if req.method == "GET":
+        contact = SPContact.objects.get(id=contact_id)
+        return render(req, 'contact_details.html', {'contact': contact})
+
+        # POST
+    contact = SPContact.objects.get(id=contact_id)
+    contact.fname = req.POST.get('f_name')
+    contact.lname = req.POST.get('l_name')
+    contact.mob_no = req.POST.get('mob_no')
+    contact.off_phone = req.POST.get('off_no')
+    contact.off_ex = req.POST.get('o_ext')
+    contact.fax = req.POST.get('fax')
+    contact.addr = req.POST.get('addr')
+    contact.email = req.POST.get('email')
+    contact.country = req.POST.get("country")
+    contact.city = req.POST.get("city")
+    contact.state = req.POST.get('state')
+    contact.zip = req.POST.get('zip')
+    contact.save()
+    contacts = SPContact.objects.all()
+
+    return render(req, 'contacts_list.html', {'contacts': contacts})
+
+def noteAdd(req):
+    if req.method == 'POST':
+
+        if req.POST.get('content') and req.POST.get('author'):
+            note = SPNote()
+            print("object created")
+            note.content = req.POST.get('content')
+            note.author = req.POST.get('author')
+            note.save()
+            print("saved")
+            return HttpResponseRedirect(reverse('sp:notes_list') )
+        else:
+            return render(req, 'note_new.html')
+    else:
+        return render(req, 'note_new.html')
+
+
+def contactAdd(req):
+    if req.method == 'POST':
+        if req.POST.get('f_name') or req.POST.get('l_name'):
+            contact = SPContact()
+            contact.fname = req.POST.get('f_name')
+            contact.lname = req.POST.get('l_name')
+            contact.phone = req.POST.get('mob_no')
+            contact.off_phone = req.POST.get('off_no')
+            contact.off_ex = req.POST.get('o_ext')
+            contact.fax = req.POST.get('fax')
+            contact.addr = req.POST.get('addr')
+            contact.country = req.POST.get('country')
+            contact.city = req.POST.get('city')
+            contact.state = req.POST.get('state')
+            contact.zip = req.POST.get('zip')
+            contact.save()
+            print("saved")
+            contacts = SPContact.objects.all()
+            return HttpResponseRedirect(reverse('sp:contacts_list'))
+
+        else:
+            return render(req, 'contacts_new.html')
+    else:
+        return render(req, 'contacts_new.html')
+
+
+
