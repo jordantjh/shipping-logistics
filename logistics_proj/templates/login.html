@@ -5,16 +5,17 @@
 <div class="login-form-div">
     <h1 class="text-center">SBA System</h1>
     <hr>
-    <form>
+    <form method="POST">
+        {% csrf_token %}
         <div class="form-group">
-            <label for="login-username">Username</label>
-            <input type="email" class="form-control" id="login-username" placeholder="Enter username">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id=username name="username" placeholder="Enter username">
         </div>
         <div class="form-group">
-            <label for="login-password">Password</label>
-            <input type="password" class="form-control" id="login-password" placeholder="Enter Password">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password">
         </div>
-        <small><a href="#">forgot password?</a></small>
+        <small><a href="pass_forget">forgot password?</a></small>
         <button type="submit" class="btn btn-primary float-right">Submit</button>
     </form>
 </div>

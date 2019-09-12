@@ -15,17 +15,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.auth import views as auth_views
 
 from . import views as rootViews
 
 ### Media settings ###
 from django.conf import settings
 from django.conf.urls.static import static
+from django.urls import reverse_lazy
 
 urlpatterns = [
     path('', include('service_providers.urls', namespace='sp')),
     path('login/', rootViews.loginView, name="login"),
-
+    path('password_change/', auth_views.PasswordChangeView.as_view(template_name='password_change.html',success_url=reverse_lazy('sp:passwordchanged')), name="change_pass"),
+    path('password_change_done', auth_views.PasswordChangeDoneView.as_view(template_name='password_change_done.html'),name='passdone'),
+    path('logoff', rootViews.logoffView, name="logoff"),
     path('admin/', admin.site.urls),
 ]
 

@@ -6102,6 +6102,9 @@ a.text-dark:hover, a.text-dark:focus {
 .sp-body {
   padding: 20px 20px 40px 20px; }
 
+.sp-body1 {
+  padding: 20px 20px 40px 20px;
+  width: 35%;}
 /****************************/
 /**** Contracts.html **********/
 /****************************/

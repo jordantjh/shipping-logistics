@@ -5,7 +5,8 @@ from datetime import datetime
 from .models import Contract, ContractUpdate, DockConfirmed, AppointmentConfirmed, DeliveryConfirmed
 
 # Create your views here.
-
+def passwordchangedView(req):
+    return render (req,'password_changed.html')
 
 def contractsView(req):
     filter_by_param = req.GET.get('filterby', '')  # '' if not found

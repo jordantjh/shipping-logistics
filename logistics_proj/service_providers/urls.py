@@ -13,4 +13,5 @@ urlpatterns = [
     path('sp/', spViews.service_pView, name="service_p"),
     path('sp/notes/', spViews.notesView, name="notes"),
     path('sp/contacts/', spViews.contactsView, name="contacts"),
+    path('passwordchanged', spViews.passwordchangedView, name="passwordchanged"),
 ]
