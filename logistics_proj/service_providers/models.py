@@ -98,5 +98,4 @@ class SPContact(models.Model):
     city = models.CharField(max_length=30)
     state = models.CharField(max_length=30)
     zip = models.CharField(max_length=30)
-    time_added = models.DateTimeField(
-        default=datetime.now, blank=True, null=True)
+
