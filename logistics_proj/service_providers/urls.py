@@ -12,7 +12,7 @@ urlpatterns = [
     path('sp/notes/<int:note_id>/', spViews.noteDetailsView, name="note_details"),
     path('sp/notes/', spViews.notesView, name="notes_list"),
     path('sp/contacts/', spViews.contactsView, name="contacts_list"),
-    path('sp/contacts/<int:pk>/', spViews.contactDetailsView, name="contract_details"),
+    path('sp/contacts/<int:contact_id>/', spViews.contactDetailsView, name="contact_details"),
     path('sp/notes/new/', spViews.noteAdd, name="note_new"),
     path('sp/contacts/new/', spViews.contactAdd, name="contacts_new"),
 ]

@@ -121,7 +121,26 @@ def milestonesView(req, contract_id):
 
 
 def service_pView(req):
-    return render(req, 'service_provider.html')
+    if req.method == "GET":
+        sid=1
+        sp = ServiceProvider.objects.get(id=sid)
+        return render(req, 'service_provider.html', {'sp': sp})
+
+    # POST
+    sid = 1
+    sp = ServiceProvider.objects.get(id=sid)
+    sp.name = req.POST.get('name')
+    sp.address = req.POST.get('addr')
+    sp.country = req.POST.get('country')
+    sp.city = req.POST.get('city')
+    sp.state = req.POST.get('zip')
+    sp.phone = req.POST.get('phone')
+    sp.email = req.POST.get('email')
+    sp.save()
+    sp = ServiceProvider.objects.get(id=sid)
+
+    return render(req, 'service_provider.html',{'sp': sp})
+
 
 
 def notesView(req):
@@ -145,18 +164,34 @@ def noteDetailsView(req, note_id):
     return render(req, 'notes_list.html',{'notes': notes})
 
 
-
-
-
-
 def contactsView(req):
     contacts = SPContact.objects.all()
     return render(req, 'contacts_list.html', {'contacts': contacts})
 
 
-def contactDetailsView(req, pk):
-    return render(req, 'contacts_details.html')
+def contactDetailsView(req, contact_id):
+    if req.method == "GET":
+        contact = SPContact.objects.get(id=contact_id)
+        return render(req, 'contact_details.html', {'contact': contact})
 
+        # POST
+    contact = SPContact.objects.get(id=contact_id)
+    contact.fname = req.POST.get('f_name')
+    contact.lname = req.POST.get('l_name')
+    contact.mob_no = req.POST.get('mob_no')
+    contact.off_phone = req.POST.get('off_no')
+    contact.off_ex = req.POST.get('o_ext')
+    contact.fax = req.POST.get('fax')
+    contact.addr = req.POST.get('addr')
+    contact.email = req.POST.get('email')
+    contact.country = req.POST.get("country")
+    contact.city = req.POST.get("city")
+    contact.state = req.POST.get('state')
+    contact.zip = req.POST.get('zip')
+    contact.save()
+    contacts = SPContact.objects.all()
+
+    return render(req, 'contacts_list.html', {'contacts': contacts})
 
 def noteAdd(req):
     if req.method == 'POST':
@@ -192,7 +227,9 @@ def contactAdd(req):
             contact.zip = req.POST.get('zip')
             contact.save()
             print("saved")
-            return HttpResponseRedirect(reverse('sp:contacts_list') )
+            contacts = SPContact.objects.all()
+            return HttpResponseRedirect(reverse('sp:contacts_list'))
+
         else:
             return render(req, 'contacts_new.html')
     else:
