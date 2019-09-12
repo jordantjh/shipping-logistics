@@ -1,0 +1,33 @@
+
+{% extends 'partials/sp_base.html' %}
+
+{% block title %}SBA | Index{% endblock %}
+
+{% block content %}
+
+<div class="sp-body">
+    <div class="note-body-title">
+     <h2> Add Notes Here</h2>
+
+    </div>
+    <br>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-inline" >
+            <label for="content" class="col-sm-4 col-form-label" >Note:</label>
+            <textarea name="content" type="" class="form-control" id="content"  ></textarea>
+        </div>
+        <div class="form-inline" >
+            <label for="author" class="col-sm-4 col-form-label">Author:</label>
+            <input name="author" type="text" class="form-control" id="author">
+        </div>
+        <br><br>
+        <div class="form-button">
+                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="cancel" class="btn btn-primary">Cancel</button>
+
+        </div>
+    </form>
+
+</div>
+{% endblock %}
