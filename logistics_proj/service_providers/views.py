@@ -25,7 +25,13 @@ def contractsView(req):
 def contractsDetailsView(req, contract_id):
     if req.method == "GET":
         contract = Contract.objects.get(id=contract_id)
-        return render(req, 'contracts_details.html', {'contract': contract})
+        try:
+            pod_img = DeliveryConfirmed.objects.filter(
+                contract_id=contract_id).first()
+            # if accidentally have 2 pods, prevent software from breaking
+        except DeliveryConfirmed.DoesNotExist:
+            pod_img = None
+        return render(req, 'contracts_details.html', {'contract': contract, 'pod_img': pod_img})
 
     ### POST request ###
     # Grab data from form and create ContractUpdate object

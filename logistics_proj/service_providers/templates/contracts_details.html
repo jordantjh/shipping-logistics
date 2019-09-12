@@ -14,6 +14,10 @@
                 <span style="color:green;">Completed</span>
                 {%else%}Active{%endif%}
             </span>
+
+            {% if contract.delivery_confirmed %}
+            <a href="{{ pod_img.signed_pod.url }}" target="_blank"><small>(view POD)</small></a>
+            {% endif %}
         </p>
         <p><a href="{% url 'sp:milestones' contract.id %}" target="_blank">generate Milestones</a></p>
     </div>
