@@ -1,11 +1,5 @@
-
-<{% extends 'partials/sp_base.html' %}
-
-{% block title %}SBA | Index{% endblock %}
-
-{% block content %}
-
-<div class="sp-body">
+{% extends 'partials/sp_base.html' %} {% block title %}SBA | Index{% endblock %} {% block content %} <div
+    class="sp-body">
     <div class="contact-body-title">
         <h2>Edit Notes Here</h2>
 
@@ -13,21 +7,47 @@
 
     <form method="POST">
         {% csrf_token %}
-        <div class="form-inline" >
+        <div class="form-inline">
             <label for="content" class="col-sm-4 col-form-label">Note:</label>
             <textarea name="content" type="" class="form-control" id="content">{{note.content}}</textarea>
         </div>
-        <div class="form-inline" >
+        <div class="form-inline">
             <label for="author" class="col-sm-4 col-form-label">Author:</label>
-                <input name="author" type="text" class="form-control" id="author" value="{{note.author}}">
+            <input name="author" type="text" class="form-control" id="author" value="{{note.author}}">
         </div>
         <br><br>
         <div class="form-button">
-                <button type="submit" class="btn btn-primary">Save</button>
-                <button type="cancel" class="btn btn-primary">Cancel</button>
-
+            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="cancel" class="btn btn-primary">Cancel</button>
         </div>
     </form>
+    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+        Delete
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Delete Confirmation</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure to delete this note?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn" data-dismiss="modal">Close</button>
+                    <button type="submit" onclick="deleteButton();" class="btn btn-danger">Confirm
+                        Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 </div>
 {% endblock %}

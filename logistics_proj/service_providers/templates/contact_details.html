@@ -1,4 +1,3 @@
-
 {% extends 'partials/sp_base.html' %}
 
 {% block title %}SBA | Index{% endblock %}
@@ -7,69 +6,95 @@
 
 <div class="sp-body">
     <div class="contact-body-title">
-      Edit Contacts Here
+        Edit Contacts Here
 
     </div>
-     <form method="POST">
+    <form method="POST">
         {% csrf_token %}
 
 
-        <div class="form-inline" >
+        <div class="form-inline">
             <label for="f_name" class="col-sm-4 col-form-label">First Name:</label>
-                <input name="f_name" type="text" class="form-control" id="f_name" value="{{contact.fname}}">
+            <input name="f_name" type="text" class="form-control" id="f_name" value="{{contact.fname}}">
         </div>
-        <div class="form-inline" >
+        <div class="form-inline">
             <label for="l_name" class="col-sm-4 col-form-label">Last Name:</label>
             <input name="l_name" type="text" class="form-control" id="l_name" value="{{contact.lname}}">
         </div>
-        <div class="form-inline" >
-            <label for="mob_no"class="col-sm-4 col-form-label">Mobile Number:</label>
-                <input name="mob_no" type="tel" class="form-control" id="mob_no" value="{{contact.mob_no}}">
+        <div class="form-inline">
+            <label for="mob_no" class="col-sm-4 col-form-label">Mobile Number:</label>
+            <input name="mob_no" type="text" class="form-control" id="mob_no" value="{{contact.mob_no}}">
         </div>
-        <div class="form-inline" >
-            <label for="off_no"class="col-sm-4 col-form-label">Office Phone:</label>
+        <div class="form-inline">
+            <label for="off_no" class="col-sm-4 col-form-label">Office Phone:</label>
 
-            <input name= "off_no" type="tel" class="form-control" id="off_no" value="{{contact.off_phone}}">
+            <input name="off_no" type="text" class="form-control" id="off_no" value="{{contact.off_phone}}">
 
             <label for="o_ext">Ext:</label>
-            <input name="o_ext" type="tel" class="form-control" id="o_ext" value="{{contact.off_ex}}">
+            <input name="o_ext" type="text" class="form-control" id="o_ext" value="{{contact.off_ex}}">
         </div>
-        <div class="form-inline" >
-            <label  for="fax"class="col-sm-4 col-form-label">Fax:</label>
-            <input name="fax"type="text" class="form-control" id="fax" value="{{contact.fax}}">
+        <div class="form-inline">
+            <label for="fax" class="col-sm-4 col-form-label">Fax:</label>
+            <input name="fax" type="text" class="form-control" id="fax" value="{{contact.fax}}">
         </div>
-         <div class="form-inline">
-                    <label for="addr" class="col-sm-4 col-form-label">Address :</label>
-                    <input  name= "addr" type="text" class="form-control" id="addr" value="{{contact.addr}}">
+        <div class="form-inline">
+            <label for="addr" class="col-sm-4 col-form-label">Address :</label>
+            <input name="addr" type="text" class="form-control" id="addr" value="{{contact.addr}}">
         </div>
-        <div class="form-inline" >
-            <label for="email"class="col-sm-4 col-form-label">Email address:</label>
+        <div class="form-inline">
+            <label for="email" class="col-sm-4 col-form-label">Email address:</label>
             <input name="email" type="email" class="form-control" id="email" value="{{contact.email}}">
         </div>
         <div class="form-inline">
-                    <label  for="country"class="col-sm-4 col-form-label">Country</label>
-                        <select name="country" class="form-control" id="country" value="{{contact.country}}">
-                            <option selected>Choose...</option>
-                            <option value="United States">United States</option>
-                            <option value="United Kingdom">United Kingdom</option>
-                            <option value="China">China</option>
-                            <option value="India">India</option>
-                        </select>
-                    <label for="city" >City:</label>
-                    <input name="city" type="text" class="form-control" id="city" value="">
+            <label for="country" class="col-sm-4 col-form-label">Country</label>
+            <select name="country" class="form-control" id="country" value="{{contact.country}}">
+                <option selected>Choose...</option>
+                <option value="United States">United States</option>
+                <option value="United Kingdom">United Kingdom</option>
+                <option value="China">China</option>
+                <option value="India">India</option>
+            </select>
+            <label for="city">City:</label>
+            <input name="city" type="text" class="form-control" id="city" value="">
         </div>
         <div class="form-inline">
-                    <label for="state"class="col-sm-4 col-form-label">State:</label>
-                    <input name="state" type="text" class="form-control" id="state" value="{{contact.state}}">
-                    <label for="zip">Zip:</label>
-                    <input name="zip" type="text" class="form-control" id="zip" value="{{contact.zip}}">
+            <label for="state" class="col-sm-4 col-form-label">State:</label>
+            <input name="state" type="text" class="form-control" id="state" value="{{contact.state}}">
+            <label for="zip">Zip:</label>
+            <input name="zip" type="text" class="form-control" id="zip" value="{{contact.zip}}">
         </div>
         <br><br>
         <div class="form-button">
-                <button type="submit" class="btn btn-primary" >Save</button>
-                <button type="cancel" class="btn btn-primary">Cancel</button>
-
+            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="cancel" class="btn btn-primary">Cancel</button>
         </div>
     </form>
+
+    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+        Delete
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Delete Confirmation</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure to delete this contact?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn" data-dismiss="modal">Close</button>
+                    <button type="submit" onclick="deleteButton();" class="btn btn-danger">Confirm
+                        Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}

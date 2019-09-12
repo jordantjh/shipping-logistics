@@ -1,3 +1,7 @@
+function deleteButton() {
+    window.location.replace("?delete=yes");
+}
+
 function filterChanged() {
     param = document.getElementById("filter-by").value;
     window.location.replace("/?filterby=" + param);
