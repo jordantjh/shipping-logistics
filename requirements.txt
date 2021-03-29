@@ -47,7 +47,7 @@ ptyprocess==0.6.0
 public==2019.4.13
 pyasn1==0.4.5
 pycodestyle==2.5.0
-Pygments==2.4.2
+Pygments==2.7.4
 PyMySQL==0.9.3
 pyrsistent==0.15.4
 python-dateutil==2.8.0
